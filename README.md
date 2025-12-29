@@ -4,7 +4,7 @@
 
 This project demonstrates how to beat compiler auto-vectorization by hand-tuning assembly-level logic using C++ intrinsics.
 
-## 🚀 Features (based on Timeline)
+##  Features (based on Timeline)
 
 - **Phase 1: The Foundation**
     - **16-byte Aligned Memory**: Custom `AlignedAllocator` ensuring zero-overhead SIMD loads (`vld1q_f32`).
@@ -36,7 +36,7 @@ This project demonstrates how to beat compiler auto-vectorization by hand-tuning
     - **Deep Learning Framework**: `neon_nn` module simulating PyTorch layers (`Linear`, `ReLU`, `Sequential`).
     - **Inference Benchmark**: Full MLP forward pass `(128->1024->1024->10)` running in **< 2ms**.
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 NeonFlux/
@@ -71,7 +71,7 @@ NeonFlux/
     └── bench_full_pass.py  # Phase 6: MLP Benchmark
 ```
 
-## 🛠️ Build & Run
+##  Build & Run
 
 ### Prerequisites
 - **Compiler**: `g++` (ARM64 native) or `aarch64-linux-gnu-g++` (Cross-compiler).
@@ -115,7 +115,7 @@ Run the comparison benchmark (NumPy vs NeonFlux):
 python3 benchmark.py
 ```
 
-## 📊 Performance highlights
+##  Performance highlights
 
 Tested on Apple Silicon (M-series) via Native compilation:
 
@@ -128,7 +128,7 @@ Tested on Apple Silicon (M-series) via Native compilation:
 | **MLP Inference** (B=64) | PyTorch (CPU) | ~3-5ms* | - | 1.0x |
 | | **NeonFlux** | **1.83ms** | - | **~2x Faster** |
 
-### 🆚 NeonFlux vs PyTorch (CPU)
+###  NeonFlux vs PyTorch (CPU)
 
 While PyTorch is a generic deep learning framework, **NeonFlux** is a specialized engine for ARM64.
 
