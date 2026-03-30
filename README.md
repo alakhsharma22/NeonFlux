@@ -138,8 +138,7 @@ Tested on Apple Silicon (M-series) via Native compilation:
 | | **NEON Unrolled** | **0.07** | **30.13** | **10.8x** |
 | **GEMM** (N=2048) | Single-Threaded | N/A | ~42.0 | ~17x |
 | | **NeonFlux (OpenMP)** | **0.08s** | **210.45** | **~85x** |
-| **MLP Inference** (B=64) | PyTorch (CPU) | ~3-5ms* | - | 1.0x |
-| | **NeonFlux** | **1.83ms** | - | **~2x Faster** |
+| **MLP Inference** (B=64) | **NeonFlux** | **1.69ms** | - | -- |
 
 ###  NeonFlux vs PyTorch (CPU)
 
@@ -148,7 +147,5 @@ While PyTorch is a generic deep learning framework, **NeonFlux** is a specialize
 1.  **Lightweight**: NeonFlux has **zero dependencies** (only C++ stdlib) vs PyTorch's massive 2GB+ binaries.
 2.  **Latency**: For small-to-medium batch sizes (e.g., in Reinforcement Learning or Robotics), NeonFlux's overhead is near zero, achieving **<2ms** latency where general frameworks struggle with dispatch overhead.
 3.  **Transparency**: You can inspect every single line of the kernel (`src/gemm.cpp`). No black-box operations.
-
-> *Note: PyTorch CPU performance represents typical values on comparable hardware. Benchmark stalled on current environment due to resource contention, but NeonFlux consistently hits ~1.8ms.*
 
 > Note: NumPy (Apple Accelerate) achieves ~1.3 TFLOPS using undocumented AMX instructions. NeonFlux achieves ~210 GFLOPS using standard NEON instructions on the CPU.
