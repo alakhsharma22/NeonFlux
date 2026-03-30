@@ -36,6 +36,19 @@ This project demonstrates how to beat compiler auto-vectorization by hand-tuning
     - **Deep Learning Framework**: `neon_nn` module simulating PyTorch layers (`Linear`, `ReLU`, `Sequential`).
     - **Inference Benchmark**: Full MLP forward pass `(128->1024->1024->10)` running in **< 2ms**.
 
+### GEMM Update
+
+NeonFlux now uses an **8x4 NEON GEMM micro-kernel** integrated into the blocked matrix multiplication pipeline.
+
+This update introduces:
+- optimized **8x4 SIMD kernel execution**
+- improved **A/B packing**
+- robust **edge-tile handling**
+- consistent **`C = A x B`** output semantics
+- continued **OpenMP multithreading**
+
+On large matrix multiplication benchmarks, this update improves NeonFlux GEMM performance from roughly **210 GFLOPS** to **228 GFLOPS**, giving an approximate **8-9% speedup** over the previous implementation.
+
 ##  Project Structure
 
 ```text
